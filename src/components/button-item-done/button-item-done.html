@@ -1,0 +1,19 @@
+<button
+  [class.button--solid]="isDone()"
+  [class.button--outline]="!isDone()"
+  (tap)="onDoneClick()"
+  icon-only
+  ion-button>
+
+  <ion-icon
+    class="button-icon"
+    *ngIf="showCheckmark()"
+    name="md-checkmark">
+  </ion-icon>
+  <div
+    class="button-text"
+    *ngIf="!showCheckmark()">
+    {{ task.doneCountPerCycle }} / {{ task.doCountPerCycle }}
+  </div>
+
+</button>

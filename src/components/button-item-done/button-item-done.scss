@@ -1,0 +1,28 @@
+button-item-done {
+  .button {
+    height: 7.5rem;
+    width: 7.5rem;
+    border-radius: 50%;
+    font-weight: bold;
+  }
+
+  .button--solid {
+    @extend .button;
+    color: white;
+    background-color: color($colors, secondary);
+
+    &.activated {
+      background-color: $secondary-light;
+    }
+  }
+
+  .button--outline {
+    @extend .button;
+    color: $gray-4;
+    background-color: white;
+
+    &.activated {
+      background-color: #fff9e2;
+    }
+  }
+}

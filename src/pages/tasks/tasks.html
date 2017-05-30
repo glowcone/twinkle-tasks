@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tasks</ion-title>
+    <ion-buttons end>
+      <button
+        class="navbar-btn-new"
+        ion-button
+        clear
+        icon-only
+        (tap)="onTaskNew()"
+      >
+        <ion-icon name=add></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div
+    ion-row
+    nowrap
+    class="list-item"
+    *ngFor="let task of tasks"
+  >
+    <button-item-done
+      [task]="task"
+      (doneClick)="onTaskDone(task)"
+    >
+    </button-item-done>
+
+    <ion-card
+      class="list-item-textContainer"
+    >
+
+      <ion-card-header 
+        class="list-item-title"
+        (tap)="onTaskExpand(task)"
+      >
+        {{ task.title }}
+
+        <ion-icon
+          [class.list-item-iconExpand]="!task.isExpanded"
+          [class.list-item-iconCollapse]="task.isExpanded"
+          name="ios-arrow-down"
+        >
+      </ion-icon>
+      </ion-card-header>
+
+      <ion-card-content *ngIf="task.isExpanded">
+      <div ion-row>{{ task.doCountPerCycle }}</div>
+      <div ion-row>
+        <button
+          ion-button
+          clear
+          (tap)="onTaskEdit(task)"
+        >
+          Edit
+        </button>
+      </div>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+</ion-content>
+
+<button
+  ion-button
+  block
+>
+  New Task
+</button>

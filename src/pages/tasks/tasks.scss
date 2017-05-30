@@ -1,0 +1,29 @@
+page-tasks {
+
+  .list-item {
+    padding: 12px 16px 0 16px;
+
+    &-textContainer {
+      background-color: white;
+      margin: 1.0em;
+      margin-left: -30px;
+      padding-left: 20px;
+    }
+
+    &-title {
+      padding-left: 20px;
+    }
+
+    &-iconExpand {
+      color: $gray-4;
+      float: right;
+      transition: transform 0.1s;
+    }
+
+    &-iconCollapse {
+      @extend .list-item-iconExpand;
+      transform: rotate(180deg);
+    }
+  }
+
+}
