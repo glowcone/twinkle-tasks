@@ -9,23 +9,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TaskEditPage {
 
-  private task;
-  private isNewTask;
-  private newTask = 
-    {
-      title: '',
-      duration: 0,
-      cycle: 1,
-      doCountPerCycle: 1,
-      doneCountPerCycle: 0,
-      lives: 3,
-      livesLeft: 2,
-      complete: false,
-    }
+  defaultTask = {
+    title: '',
+    duration: 0,
+    cycle: 'day',
+    doCountPerCycle: 1,
+    doneCountPerCycle: 0,
+    before: 0,
+    lives: 3,
+    livesLeft: 3,
+    complete: false,
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  task;
+  isNewTask;
+  editTaskForm;
+  durationMultiplier = 1;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder,
+  ) {
     this.task = navParams.get('task');
-    this.isNewTask = (this.task === null);
+    if (this.task === null) {
+      this.isNewTask = true;
+      this.task = this.defaultTask;
+    }
+    this.editTaskForm = this.createEditTaskForm();
+  }
+
+  onTaskSave() {
+    this.task.duration *= this.durationMultiplier;
+
+  }
+
+  private createEditTaskForm(): FormGroup {
+    return this.formBuilder.group(Object.assign({}, this.task, {
+      'title': [this.task.title, Validators.required]
+    }))
   }
 
 }

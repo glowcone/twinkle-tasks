@@ -14,14 +14,14 @@ page-tasks {
       padding-left: 20px;
     }
 
-    &-iconExpand {
+    &-icon--expand {
       color: $gray-4;
       float: right;
       transition: transform 0.1s;
     }
 
-    &-iconCollapse {
-      @extend .list-item-iconExpand;
+    &-icon--collapse {
+      @extend .list-item-icon--expand;
       transform: rotate(180deg);
     }
   }

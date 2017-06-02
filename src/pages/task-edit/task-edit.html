@@ -8,9 +8,46 @@
 
 
 <ion-content padding>
-  <div
-    ion-row
-    class=""
-  >
-  </div>
+<ion-card>
+  <form [formGroup]="editTaskForm" class="">
+      <ion-input
+        type="text"
+        class="item-input--title"
+        formControlName="title"
+        placeholder="Do a thing"
+        text-center
+      >
+      </ion-input>
+    
+    <ion-item>
+      <ion-checkbox item-start></ion-checkbox>
+      <ion-input type="text" formControlName="doCountPerCycle" text-center></ion-input>
+      <span item-content class="item-label">times per</span>
+      <ion-select formControlName="cycle">
+        <ion-option value="day">day</ion-option>
+        <ion-option value="week">week</ion-option>
+        <ion-option value="month">month</ion-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox item-start></ion-checkbox>
+      <span item-content class="item-label">for</span>
+      <ion-input type="number" formControlName="duration" text-center></ion-input>
+      <ion-select [(ngModel)]="durationMultiplier" [ngModelOptions]="{standalone: true}">
+        <ion-option value="1">minutes</ion-option>
+        <ion-option value="60">hours</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item text-center>
+      <span item-content>
+        <ion-icon name="heart"></ion-icon>
+        x
+      </span>
+      <ion-input type="number" formControlName="lives"></ion-input>
+    </ion-item>
+  </form>
+</ion-card>
 </ion-content>

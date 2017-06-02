@@ -12,9 +12,10 @@ export class TasksPage {
     {
       title: 'Practice Piano',
       duration: 30,
-      cycle: 1,
+      cycle: 'day',
       doCountPerCycle: 1,
       doneCountPerCycle: 0,
+      before: 0,
       lives: 3,
       livesLeft: 2,
       complete: false,
@@ -22,9 +23,10 @@ export class TasksPage {
     {
       title: 'Drink Water',
       duration: null,
-      cycle: 1,
+      cycle: 'day',
       doCountPerCycle: 6,
       doneCountPerCycle: 6,
+      before: 0,
       lives: 6,
       livesLeft: 6,
       complete: false,
@@ -32,9 +34,10 @@ export class TasksPage {
     {
       title: 'Do Homework',
       duration: null,
-      cycle: 1,
-      doCountPerCycle: 2,
+      cycle: 'week',
+      doCountPerCycle: 3,
       doneCountPerCycle: 1,
+      before: 0,
       lives: 2,
       livesLeft: 1,
       complete: false,
@@ -44,21 +47,21 @@ export class TasksPage {
   constructor(public navCtrl: NavController) {
   }
 
-  private onTaskDone(task) {
+  onTaskDone(task) {
     console.log("done");
   }
 
-  private onTaskExpand(task) {
+  onTaskExpand(task) {
     task.isExpanded = !task.isExpanded;
   }
 
-  private onTaskNew() {
+  onTaskNew() {
     this.navCtrl.push('TaskEditPage', {
       task: null
     });
   }
 
-  private onTaskEdit(task) {
+  onTaskEdit(task) {
     this.navCtrl.push('TaskEditPage', {
       task: task
     });

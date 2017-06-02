@@ -1,3 +1,28 @@
 page-task-edit {
 
+  .item {
+    &-label {
+    }
+
+    &-input--title {
+      font-size: 2.4rem;
+    }
+  }
+
+  ion-select {
+    flex: 1;
+  }
+
+  .input-cover {
+    position: static;
+  }
+
+  .item-cover {
+    left: initial;
+  }
+
+  ion-checkbox > .item-cover {
+    display: none;
+  }
+
 }

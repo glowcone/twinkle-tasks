@@ -3,13 +3,14 @@
     <ion-title>Tasks</ion-title>
     <ion-buttons end>
       <button
-        class="navbar-btn-new"
         ion-button
         clear
         icon-only
         (tap)="onTaskNew()"
       >
-        <ion-icon name=add></ion-icon>
+      <ion-icon
+        name="md-add"
+      ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -39,8 +40,8 @@
         {{ task.title }}
 
         <ion-icon
-          [class.list-item-iconExpand]="!task.isExpanded"
-          [class.list-item-iconCollapse]="task.isExpanded"
+          [class.list-item-icon--expand]="!task.isExpanded"
+          [class.list-item-icon--collapse]="task.isExpanded"
           name="ios-arrow-down"
         >
       </ion-icon>
