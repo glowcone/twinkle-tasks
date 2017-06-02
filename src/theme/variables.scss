@@ -15,13 +15,14 @@ $font-path: "../assets/fonts";
 $gray-4: #666666;
 $gray-5: #d1d1d1;
 
-$secondary-light: #ffe83f;
+$secondary-light: #FFF698;
 $secondary-dark: #cc9e00;
+$primary-dark: #261957;
 
 $colors: (
-  primary:    #613abc,
-  secondary:  #ffcc00,
-  danger:     #f53d3d,
+  primary:    #59498F,
+  secondary:  #FFD65C,
+  danger:     #FF3E38,
   light:      #f4f4f4,
   dark:       #222222
 );
@@ -33,21 +34,20 @@ $colors: (
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$background-color: #4a148c;
+// $background-color: color($colors, secondary);
+// $toolbar-md-title-text-color: #ffffff;
+// $toolbar-ios-title-text-color: #ffffff;
+// $toolbar-background: color($colors, primary);
 
-$toolbar-md-title-text-color: #ffffff;
-$toolbar-ios-title-text-color: #ffffff;
-$toolbar-background: color($colors, primary);
-
-$tabs-background: color($colors, secondary);
-$tabs-md-tab-text-color: $secondary-dark;
-$tabs-md-tab-text-color-active: #ffffff;
-$tabs-md-tab-icon-color-active: #ffffff;
-$tabs-md-tab-icon-color: $secondary-dark;
-$tabs-ios-tab-text-color: $secondary-dark;
-$tabs-ios-tab-text-color-active: #ffffff;
-$tabs-ios-tab-icon-color-active: #ffffff;
-$tabs-ios-tab-icon-color: $secondary-dark;
+// $tabs-background: color($colors, secondary);
+// $tabs-md-tab-text-color: $secondary-dark;
+// $tabs-md-tab-text-color-active: #ffffff;
+// $tabs-md-tab-icon-color-active: #ffffff;
+// $tabs-md-tab-icon-color: $secondary-dark;
+// $tabs-ios-tab-text-color: $secondary-dark;
+// $tabs-ios-tab-text-color-active: #ffffff;
+// $tabs-ios-tab-icon-color-active: #ffffff;
+// $tabs-ios-tab-icon-color: $secondary-dark;
 
 
 // App iOS Variables

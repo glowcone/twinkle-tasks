@@ -22,7 +22,7 @@ button-item-done {
     background-color: white;
 
     &.activated {
-      background-color: #fff9e2;
+      background-color: $secondary-light;
     }
   }
 }
