@@ -1,47 +1,34 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TaskService, Task } from '../../api/task.service';
 
-@IonicPage()
 @Component({
   selector: 'page-task-edit',
   templateUrl: 'task-edit.html',
 })
-export class TaskEditPage {
-
-  defaultTask = {
-    title: '',
-    duration: 0,
-    cycle: 'day',
-    doCountPerCycle: 1,
-    doneCountPerCycle: 0,
-    before: 0,
-    lives: 3,
-    livesLeft: 3,
-    complete: false,
-  }
+export class TaskEditModal {
 
   task;
   isNewTask;
   editTaskForm;
-  durationMultiplier = 1;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
+    private navCtrl: NavController,
+    private navParams: NavParams,
     public formBuilder: FormBuilder,
+    private taskService: TaskService,
   ) {
     this.task = navParams.get('task');
     if (this.task === null) {
       this.isNewTask = true;
-      this.task = this.defaultTask;
+      this.task = new Task();
     }
     this.editTaskForm = this.createEditTaskForm();
   }
 
   onTaskSave() {
-    this.task.duration *= this.durationMultiplier;
-
+    this.taskService.create(this.task).subscribe();
   }
 
   private createEditTaskForm(): FormGroup {

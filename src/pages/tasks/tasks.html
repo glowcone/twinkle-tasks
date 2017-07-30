@@ -1,73 +1,54 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Tasks</ion-title>
-    <ion-buttons end>
-      <button
-        ion-button
-        clear
-        icon-only
-        (tap)="onTaskNew()"
-      >
-      <ion-icon
-        name="md-add"
-      ></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-  <div
-    ion-row
-    nowrap
-    class="list-item"
-    *ngFor="let task of tasks"
-  >
+<ion-row>
+<button ion-button end (click)="onTaskNew()"><ion-icon name="add"></ion-icon></button>
+</ion-row>
+  <ion-card>
+    <div
+      ion-row
+      nowrap
+      class="list-item"
+      *ngFor="let task of tasks"
+      >
     <button-item-done
       [task]="task"
       (doneClick)="onTaskDone(task)"
     >
     </button-item-done>
 
-    <ion-card
-      class="list-item-textContainer"
-    >
-
-      <ion-card-header 
+      <div
         class="list-item-title"
         (tap)="onTaskExpand(task)"
       >
-        {{ task.title }}
+        {{ task.name }}
 
         <ion-icon
           [class.list-item-icon--expand]="!task.isExpanded"
           [class.list-item-icon--collapse]="task.isExpanded"
           name="ios-arrow-down"
         >
-      </ion-icon>
-      </ion-card-header>
-
-      <ion-card-content *ngIf="task.isExpanded">
-      <div ion-row>{{ task.doCountPerCycle }}</div>
-      <div ion-row>
-        <button
-          ion-button
-          clear
-          (tap)="onTaskEdit(task)"
-        >
-          Edit
-        </button>
+        </ion-icon>
       </div>
-      </ion-card-content>
+
+      <div *ngIf="task.isExpanded">
+        <div ion-row>{{ task.duration }}</div>
+        <div
+          ion-row
+          *ngFor="let cycle of task.task_cycles"
+          >
+          {{ cycle.muliplier }}
+          {{ cycle.do_count }}
+        </div>
+        <div ion-row>
+          <button
+            ion-button
+            clear
+            (tap)="onTaskEdit(task)"
+          >
+            Edit
+          </button>
+        </div>
+      </div>
+      </div>
 
     </ion-card>
-
-  </div>
 </ion-content>
-
-<button
-  ion-button
-  block
->
-  New Task
-</button>

@@ -8,11 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tab1Root = 'CalendarPage';
+  tab1Root = 'SettingsPage';
   tab2Root = 'TasksPage';
-  tab3Root = 'SettingsPage';
+  tab3Root = 'TreatsPage';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
   }
 
   ionViewDidLoad() {

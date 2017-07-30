@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { IonicPage, NavController } from 'ionic-angular';
+import { TaskService, Task } from '../../api/task.service';
 
 @IonicPage()
 @Component({
@@ -8,47 +10,20 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class TasksPage {
 
-  tasks = [
-    {
-      title: 'Practice Piano',
-      duration: 30,
-      cycle: 'day',
-      doCountPerCycle: 1,
-      doneCountPerCycle: 0,
-      before: 0,
-      lives: 3,
-      livesLeft: 2,
-      complete: false,
-    },
-    {
-      title: 'Drink Water',
-      duration: null,
-      cycle: 'day',
-      doCountPerCycle: 6,
-      doneCountPerCycle: 6,
-      before: 0,
-      lives: 6,
-      livesLeft: 6,
-      complete: false,
-    },
-    {
-      title: 'Do Homework',
-      duration: null,
-      cycle: 'week',
-      doCountPerCycle: 3,
-      doneCountPerCycle: 1,
-      before: 0,
-      lives: 2,
-      livesLeft: 1,
-      complete: false,
-    }
-  ]
+  tasks: Task[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    private http: Http,
+    private navCtrl: NavController,
+    private taskService: TaskService
+  ) {
+    this.getTasks();
   }
 
   onTaskDone(task) {
-    console.log("done");
+    this.taskService.update(task.id, {
+      increment_done_count: true
+    })
   }
 
   onTaskExpand(task) {
@@ -65,5 +40,9 @@ export class TasksPage {
     this.navCtrl.push('TaskEditPage', {
       task: task
     });
+  }
+
+  getTasks() {
+    this.taskService.query().subscribe((tasks) => this.tasks = tasks)
   }
 }

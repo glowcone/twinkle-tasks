@@ -17,11 +17,17 @@ export class ButtonItemDoneComponent {
   }
 
   protected showCheckmark() {
-    return this.task.doCountPerCycle === 1 || this.isDone();
+    return 
   }
 
   protected isDone() {
-    return this.task.doCountPerCycle - this.task.doneCountPerCycle <= 0;
+    const cycles = this.task.task_cycles
+    if (cycles.length == 0) {
+      return this.task.is_done;
+    } else {
+      const day = cycles.find((c) => c.repeat == "day");
+      return (day.do_count - )
+    }
   }
 
   protected onDoneClick() {
